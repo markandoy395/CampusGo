@@ -593,8 +593,10 @@ document.getElementById('locationForm').addEventListener('submit', async functio
             
             const locData = {
                 name: document.getElementById('locationName').value.trim() || 'Unnamed Location',
-                building: document.getElementById('building').value || 'Unknown Building',
-                connected_path: connectedPath.length > 0 ? connectedPath : ['main_pathway'],
+ building: document.getElementById('building').value.trim() !== '' 
+        ? document.getElementById('building').value.trim() 
+        : document.getElementById('category').value,                
+        connected_path: connectedPath.length > 0 ? connectedPath : ['main_pathway'],
                 type: document.getElementById('locationType').value || 'room',
                 floor: document.getElementById('floor').value || 'Ground Floor',
                 category: document.getElementById('category').value || 'location',
